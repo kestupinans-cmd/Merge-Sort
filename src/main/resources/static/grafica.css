@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Arial;
+    background: #1e1e2f;
+    color: #e4e6eb;
+    text-align: center;
+}
+
+/* título */
+h2 {
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* tarjeta gráfica */
+.grafica-container {
+    width: 650px;
+    height: 360px;
+    margin: 30px auto;
+    background: #2a2d3e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+/* canvas */
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* tarjeta explicación */
+.explicacion {
+    width: 650px;
+    margin: 20px auto;
+    text-align: left;
+    background: #2a2d3e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+/* subtítulos */
+.explicacion h3 {
+    color: #4db8ff;
+    margin-bottom: 10px;
+}
+
+/* bloques */
+.bloque {
+    margin-bottom: 15px;
+}
+
+/* listas */
+ul {
+    padding-left: 20px;
+}
+
+/* fórmula */
+.formula {
+    background: #1b1d2a;
+    padding: 10px;
+    border-left: 4px solid #4db8ff;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* resaltar palabras */
+.highlight {
+    color: #4db8ff;
+    font-weight: bold;
+}
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background: #4db8ff;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #3399ff;
+}

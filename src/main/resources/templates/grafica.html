@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfica MergeSort</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/grafica.css">
+</head>
+
+<body>
+
+<h2>📊 Análisis de Complejidad - MergeSort</h2>
+<button onclick="window.location.href='/'">📓 explicacion</button>
+
+<div class="grafica-container">
+    <canvas id="chart"></canvas>
+</div>
+
+<div class="explicacion">
+
+    <h3>📌 1. ¿Qué representa T(n)?</h3>
+    <div class="bloque">
+        <p>
+            La función <span class="highlight">T(n)</span> describe el tiempo que tarda un algoritmo
+            en ejecutarse dependiendo del tamaño de entrada <span class="highlight">n</span>.
+        </p>
+    </div>
+
+    <h3>📌 2. Complejidad de MergeSort</h3>
+    <div class="bloque">
+        <div class="formula">
+            T(n) = n · log₂(n)
+        </div>
+
+        <p>
+            Esta expresión indica que el algoritmo tiene una complejidad
+            <span class="highlight">O(n log n)</span>, lo que significa que crece de forma
+            eficiente incluso con grandes volúmenes de datos.
+        </p>
+    </div>
+
+    <h3>📌 3. ¿Por qué es n log n?</h3>
+    <div class="bloque">
+        <ul>
+            <li><b>División:</b> El arreglo se divide en mitades → ocurre <b>log₂(n)</b> veces.</li>
+            <li><b>Combinación:</b> Cada nivel requiere recorrer todos los elementos → <b>n</b>.</li>
+        </ul>
+
+        <p>
+            Por lo tanto:
+        </p>
+
+        <div class="formula">
+            Trabajo total = niveles × trabajo por nivel = log(n) × n
+        </div>
+    </div>
+
+    <h3>📌 4. Interpretación de la gráfica</h3>
+    <div class="bloque">
+        <ul>
+            <li>📈 La curva sólida representa el <b>tiempo real promedio</b>.</li>
+            <li>📊 La curva punteada representa la <b>función teórica T(n)</b>.</li>
+        </ul>
+
+        <p>
+            Si ambas curvas tienen una forma similar, se confirma que el algoritmo
+            sigue el comportamiento teórico esperado.
+        </p>
+    </div>
+
+    <h3>📌 5. Conclusión</h3>
+    <div class="bloque">
+        <p>
+            MergeSort es un algoritmo altamente eficiente para ordenar grandes conjuntos de datos,
+            ya que su complejidad <span class="highlight">O(n log n)</span> es significativamente mejor
+            que algoritmos como BubbleSort (<span class="highlight">O(n²)</span>).
+        </p>
+
+        <p>
+            Esto lo hace ideal en aplicaciones donde el rendimiento es crítico.
+        </p>
+    </div>
+
+</div>
+
+<script src="/grafica.js"></script>
+
+</body>
+</html>
