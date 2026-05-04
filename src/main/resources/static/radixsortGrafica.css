@@ -1,0 +1,33 @@
+body {
+    background: #1e1e2f;
+    color: white;
+    text-align: center;
+}
+
+.grafica-container {
+    width: 650px;
+    height: 350px;
+    margin: 30px auto;
+    background: #2a2d3e;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.explicacion {
+    width: 650px;
+    margin: auto;
+    background: #2a2d3e;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.formula {
+    background: #1b1d2a;
+    padding: 10px;
+    border-left: 4px solid #4db8ff;
+}

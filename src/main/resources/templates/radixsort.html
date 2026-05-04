@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RadixSort Visual</title>
+    <link rel="stylesheet" href="/radixsort.css">
+</head>
+
+<body>
+
+<h2>🔢 RadixSort Visual</h2>
+
+<div class="panel-input">
+    <input id="input" placeholder="Ej: 170,45,75,90,802,24,2,66">
+    <button onclick="cargar()">Cargar</button>
+    <button onclick="generarAleatorio()">🎲 Aleatorio</button>
+    <button onclick="document.getElementById('fileInput').click()">📂 CSV</button>
+    <button onclick="window.location.href='/radixsort/grafica'">📈 Gráfica</button>
+    <button onclick="window.location.href='/'">⬅️ Volver</button>
+
+</div>
+
+<input type="file" id="fileInput" accept=".csv" style="display:none" onchange="leerCSV(event)">
+
+<h3>📊 Distribución por dígitos</h3>
+<div id="buckets"></div>
+
+<h3>📈 Resultado parcial</h3>
+<div id="array"></div>
+
+<div id="msg"></div>
+
+<div class="controles">
+    <button onclick="prev()">⏮</button>
+    <button onclick="next()">⏭</button>
+    <button onclick="play()">▶</button>
+    <button onclick="pause()">⏸</button>
+</div>
+
+<script src="/radixsort.js"></script>
+
+</body>
+</html>

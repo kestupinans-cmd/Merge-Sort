@@ -66,29 +66,47 @@ async function medir() {
 
 function graficar() {
 
-    const ctx = document.getElementById('chart');
+    // 🔥 NORMALIZAR TIEMPOS
+    let maxTiempo = Math.max(...tiempos);
+    let tiemposNorm = tiempos.map(t => t / maxTiempo);
 
-    new Chart(ctx, {
+    // 🔥 FUNCIÓN TEÓRICA TreeSort ≈ n log n
+    let teorico = sizes.map(n => n * Math.log2(n));
+    let maxTeorico = Math.max(...teorico);
+    let teoricoNorm = teorico.map(t => t / maxTeorico);
+
+    new Chart(document.getElementById("chart"), {
         type: 'line',
         data: {
             labels: sizes,
             datasets: [
                 {
-                    label: 'Tiempo promedio (ms)',
-                    data: tiempos,
-                    borderWidth: 2
+                    label: 'TreeSort (normalizado)',
+                    data: tiemposNorm,
+                    tension: 0.3
                 },
                 {
-                    label: 'n log(n)',
-                    data: sizes.map(n => n * Math.log2(n) / 1000),
-                    borderDash: [5,5]
-                },
-                {
-                    label: 'n²',
-                    data: sizes.map(n => (n*n)/1000000),
-                    borderDash: [2,2]
+                    label: 'T(n) ≈ n log n (normalizado)',
+                    data: teoricoNorm,
+                    tension: 0.3
                 }
             ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: { color: 'white' }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: 'white' }
+                },
+                y: {
+                    ticks: { color: 'white' }
+                }
+            }
         }
     });
 }

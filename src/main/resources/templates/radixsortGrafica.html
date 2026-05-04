@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>RadixSort Gráfica</title>
+    <link rel="stylesheet" href="/radixsortGrafica.css">
+</head>
+
+<body>
+
+<h2>📊 Rendimiento RadixSort</h2>
+
+<div class="grafica-container">
+    <canvas id="chart"></canvas>
+</div>
+
+<div class="explicacion">
+    <h3>📌 Complejidad</h3>
+    <div class="formula">T(n) = n * k</div>
+
+    <p>
+        Donde k es el número de dígitos del número más grande.
+    </p>
+
+    <ul>
+        <li>No depende de comparaciones</li>
+        <li>Muy eficiente para números grandes</li>
+    </ul>
+</div>
+
+<button onclick="window.location.href='/radixsort'">⬅ Volver</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/radixsortGrafica.js"></script>
+
+</body>
+</html>

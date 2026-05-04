@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI';
+    background: #1e1e2f;
+    color: white;
+    text-align: center;
+}
+
+.panel-input {
+    margin: 20px;
+}
+
+input {
+    padding: 8px;
+    width: 280px;
+    background: #2a2d3e;
+    border: none;
+    color: white;
+    border-radius: 6px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    background: #4db8ff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3aa6e0;
+}
+
+/* buckets */
+#buckets {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 80%;
+    margin: auto;
+}
+
+.bucket {
+    background: #2a2d3e;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.bucket-title {
+    font-size: 12px;
+    color: #4db8ff;
+}
+
+.bucket-array {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* array */
+#array {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    background: #4db8ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+.anim {
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.5); background: red; }
+    100% { transform: scale(1); }
+}
+
+#msg {
+    margin: 15px;
+    color: #4db8ff;
+}
