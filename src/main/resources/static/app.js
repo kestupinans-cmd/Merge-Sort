@@ -4,6 +4,7 @@ let interval = null;
 
 let divideRoot = null;
 let mergeRoot = null;
+let originalArray = [];
 
 /* =========================
    CARGAR
@@ -11,24 +12,25 @@ let mergeRoot = null;
 function cargar() {
 
     const input = document.getElementById("input").value;
-    const arr = input.split(",").map(x => parseInt(x.trim()));
+    const arr = input.split(",").map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+
+    if (arr.length === 0) return;
+
+    originalArray = [...arr];
 
     steps = [];
     currentStep = 0;
 
     generateSteps(arr, 0);
 
-    // árbol división empieza SOLO con raíz
     divideRoot = createNode(arr, 0, arr.length - 1);
-
-    // árbol merge vacío
     mergeRoot = createNode([], 0, arr.length - 1);
 
     renderAll();
 }
 
 /* =========================
-   GENERAR PASOS (DIV + MERGE)
+   GENERAR PASOS
 ========================= */
 function generateSteps(arr, start) {
 
@@ -39,7 +41,7 @@ function generateSteps(arr, start) {
     const leftArr = arr.slice(0, mid);
     const rightArr = arr.slice(mid);
 
-    // 🔴 PASO DE DIVISIÓN
+    // 🔴 DIVISIÓN
     steps.push({
         type: "divide",
         arr: [...arr],
@@ -47,7 +49,7 @@ function generateSteps(arr, start) {
         right: [...rightArr],
         start: start,
         end: start + arr.length - 1,
-        mensaje: `Dividir [${arr}] → izquierda [${leftArr}] y derecha [${rightArr}]`
+        mensaje: `🔴 Dividiendo [${arr}] → izquierda [${leftArr}] | derecha [${rightArr}]`
     });
 
     const left = generateSteps(leftArr, start);
@@ -59,7 +61,7 @@ function generateSteps(arr, start) {
 
     while (i < left.length && j < right.length) {
 
-        if (left[i] < right[j]) {
+        if (left[i] <= right[j]) {
             merged.push(left[i]);
             steps.push(createMergeStep(left, right, merged, start, arr.length, left[i], "izquierda"));
             i++;
@@ -93,7 +95,7 @@ function createMergeStep(izq, der, res, start, len, val, lado) {
         resultado: [...res],
         leftIndex: start,
         rightIndex: start + len - 1,
-        mensaje: `Comparando [${izq}] y [${der}] → se agrega ${val} (${lado}). Resultado parcial: [${res}]`
+        mensaje: `🟢 Merge: ${val} desde ${lado} → resultado parcial [${res}]`
     };
 }
 
@@ -112,7 +114,7 @@ function createNode(values, start, end) {
 }
 
 /* =========================
-   APLICAR PASOS
+   APLICAR PASO
 ========================= */
 function applyStep(step) {
 
@@ -124,7 +126,7 @@ function applyStep(step) {
 }
 
 /* =========================
-   DIVISIÓN DINÁMICA
+   DIVISIÓN
 ========================= */
 function applyDivide(step) {
 
@@ -168,6 +170,7 @@ function applyMerge(step) {
 
         if (node.start === step.leftIndex && node.end === step.rightIndex) {
 
+            // crear hijos si no existen
             if (!node.left && !node.right) {
 
                 node.left = createNode(
@@ -230,7 +233,9 @@ function renderTree(root, id, isMerge) {
             arr.appendChild(box);
         });
 
-        if (isMerge && (node.left || node.right)) {
+        div.appendChild(arr);
+
+        if (node.left || node.right) {
 
             const children = document.createElement("div");
             children.className = "tree-children";
@@ -239,22 +244,6 @@ function renderTree(root, id, isMerge) {
             if (node.right) children.appendChild(render(node.right));
 
             div.appendChild(children);
-            div.appendChild(arr);
-
-        } else {
-
-            div.appendChild(arr);
-
-            if (node.left || node.right) {
-
-                const children = document.createElement("div");
-                children.className = "tree-children";
-
-                if (node.left) children.appendChild(render(node.left));
-                if (node.right) children.appendChild(render(node.right));
-
-                div.appendChild(children);
-            }
         }
 
         node.animate = false;
@@ -283,9 +272,8 @@ function prev() {
 
     currentStep--;
 
-    // reiniciar árboles
-    divideRoot = createNode(divideRoot.values, 0, divideRoot.values.length - 1);
-    mergeRoot = createNode([], 0, divideRoot.values.length - 1);
+    divideRoot = createNode(originalArray, 0, originalArray.length - 1);
+    mergeRoot = createNode([], 0, originalArray.length - 1);
 
     for (let i = 0; i < currentStep; i++) {
         applyStep(steps[i]);
@@ -315,8 +303,9 @@ function pause() {
     clearInterval(interval);
     interval = null;
 }
+
 /* =========================
-   GENERAR ALEATORIOS
+   ALEATORIO
 ========================= */
 function generarAleatorio() {
 
@@ -330,7 +319,7 @@ function generarAleatorio() {
 }
 
 /* =========================
-   LEER CSV
+   CSV
 ========================= */
 function leerCSV(event) {
 
@@ -343,18 +332,33 @@ function leerCSV(event) {
 
         let contenido = e.target.result;
 
-        // separar por comas, saltos de línea o espacios
         let valores = contenido
             .split(/[\s,;\n\r]+/)
             .map(x => x.trim())
             .filter(x => x !== "")
-            .map(x => parseInt(x));
-
-        // limpiar NaN
-        valores = valores.filter(x => !isNaN(x));
+            .map(x => parseInt(x))
+            .filter(x => !isNaN(x));
 
         document.getElementById("input").value = valores.join(",");
     };
 
     reader.readAsText(file);
+}
+
+/* =========================
+   MODAL
+========================= */
+function abrirModal() {
+    document.getElementById("modal").style.display = "block";
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
 }

@@ -16,14 +16,13 @@
 <button onclick="cargar()">Cargar</button>
 <button onclick="generarAleatorio()">🎲 Aleatorio</button>
 <button onclick="document.getElementById('fileInput').click()">📂 Importar CSV</button>
+<button onclick="abrirModal()">📘 Explicación</button>
 <button onclick="window.location.href='/grafica'">📈 Grafica</button>
 <button onclick="window.location.href='/treesort'">🌲 TreeSort</button>
 <button onclick="window.location.href='/radixsort'">📓 RadixSort</button>
 
-
-<!-- input oculto -->
-
 <input type="file" id="fileInput" accept=".csv" style="display:none" onchange="leerCSV(event)">
+
 <div class="section">
     <h3>🔴 División</h3>
     <div id="treeDivide"></div>
@@ -43,54 +42,59 @@
     <button onclick="pause()">⏸</button>
 </div>
 
-<!-- EXPLICACIÓN -->
-<div class="explicacion">
+<!-- 🔥 MODAL (IMPORTANTE: FUERA Y BIEN POSICIONADO) -->
+<div id="modal" class="modal">
+    <div class="modal-content">
 
-    <h2>📘 Explicación detallada de MergeSort</h2>
+        <span class="close" onclick="cerrarModal()">×</span>
 
-    <h3>1. Idea principal</h3>
-    <p>
-        MergeSort es un algoritmo que organiza un arreglo usando la técnica divide y vencerás.
-        Primero divide el problema en partes pequeñas y luego las combina ordenadamente.
-    </p>
+        <h2>📘 ¿Cómo funciona MergeSort?</h2>
 
-    <h3>2. División (árbol rojo)</h3>
-    <ul>
-        <li>El arreglo se parte en dos</li>
-        <li>Cada parte se vuelve a dividir</li>
-        <li>Se repite hasta tener elementos individuales</li>
-    </ul>
+        <h3>📌 1. Idea principal</h3>
+        <p>
+            MergeSort utiliza la técnica <b>divide y vencerás</b>.
+            Primero divide el problema en partes pequeñas, luego las resuelve
+            y finalmente las combina ordenadamente.
+        </p>
 
-    <h3>3. Caso base</h3>
-    <p>
-        Cuando un arreglo tiene un solo elemento, ya está ordenado.
-    </p>
+        <h3>📌 2. División (lo que ves arriba 🔴)</h3>
+        <ul>
+            <li>El arreglo se divide en dos partes</li>
+            <li>Cada parte se vuelve a dividir</li>
+            <li>Esto continúa hasta tener arreglos de 1 elemento</li>
+        </ul>
 
-    <h3>4. Mezcla (árbol verde)</h3>
-    <ul>
-        <li>Se comparan los elementos de dos subarreglos</li>
-        <li>Se toma el menor</li>
-        <li>Se construye un nuevo arreglo ordenado</li>
-    </ul>
+        <h3>📌 3. Caso base</h3>
+        <p>
+            Un arreglo de un solo elemento ya está ordenado.
+        </p>
 
-    <h3>5. Construcción progresiva</h3>
+        <h3>📌 4. Merge (lo que ves abajo 🟢)</h3>
+        <ul>
+            <li>Se comparan dos arreglos</li>
+            <li>Se toma el menor</li>
+            <li>Se construye un arreglo ordenado paso a paso</li>
+        </ul>
 
-    <div class="formula">
-        [2] → [2,3] → [2,3,6] → [2,3,6,7]
+        <h3>📌 5. Ejemplo</h3>
+        <div class="formula">
+            [3,7,6,2] → [3,7] [6,2] → [3] [7] [6] [2] → [3,7] [2,6] → [2,3,6,7]
+        </div>
+
+        <h3>📌 6. Complejidad</h3>
+        <div class="formula">
+            T(n) = n · log(n)
+        </div>
+
+        <ul>
+            <li>log(n) niveles</li>
+            <li>n operaciones por nivel</li>
+        </ul>
+
     </div>
-
-    <h3>6. Complejidad</h3>
-
-    <div class="formula">
-        T(n) = n · log(n)
-    </div>
-
-    <p>
-        Se divide en log(n) niveles y en cada nivel se recorren n elementos.
-    </p>
-
 </div>
 
+<!-- 🔥 SCRIPT AL FINAL (CLAVE) -->
 <script src="/app.js"></script>
 
 </body>

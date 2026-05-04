@@ -143,3 +143,18 @@ function leerCSV(e) {
 
     reader.readAsText(file);
 }
+function abrirModal() {
+    document.getElementById("modal").style.display = "block";
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+// cerrar si hace click afuera
+window.onclick = function(event) {
+    let modal = document.getElementById("modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}

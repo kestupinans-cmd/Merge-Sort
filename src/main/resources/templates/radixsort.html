@@ -15,6 +15,7 @@
     <button onclick="generarAleatorio()">🎲 Aleatorio</button>
     <button onclick="document.getElementById('fileInput').click()">📂 CSV</button>
     <button onclick="window.location.href='/radixsort/grafica'">📈 Gráfica</button>
+    <button onclick="abrirModal()">📘 Explicación</button>
     <button onclick="window.location.href='/'">⬅️ Volver</button>
 
 </div>
@@ -37,6 +38,72 @@
 </div>
 
 <script src="/radixsort.js"></script>
+<!-- 🔥 MODAL EXPLICACIÓN -->
+<div id="modal" class="modal">
 
+    <div class="modal-content">
+
+        <span class="close" onclick="cerrarModal()">×</span>
+
+        <h2>📘 ¿Cómo funciona Radix Sort?</h2>
+
+        <h3>📌 1. Concepto general</h3>
+        <p>
+            Radix Sort es un algoritmo de ordenamiento que NO compara elementos directamente.
+            En lugar de eso, organiza los números según sus dígitos, empezando desde el menos significativo.
+        </p>
+
+        <h3>📌 2. Funcionamiento paso a paso</h3>
+        <ul>
+            <li>Se identifica el número con más dígitos</li>
+            <li>Se agrupan los números en <b>buckets (0–9)</b> según el dígito actual</li>
+            <li>Se reconstruye el arreglo manteniendo el orden</li>
+            <li>Se repite para el siguiente dígito (decenas, centenas...)</li>
+        </ul>
+
+        <h3>📌 3. Ejemplo</h3>
+        <p>
+            Para el arreglo: <b>[170, 45, 75, 90]</b>
+        </p>
+        <ul>
+            <li>Unidades → se agrupan por último dígito</li>
+            <li>Decenas → se vuelve a agrupar</li>
+            <li>Resultado final → arreglo ordenado</li>
+        </ul>
+
+        <h3>📌 4. Complejidad</h3>
+        <div class="formula">
+            T(n) = n * k
+        </div>
+
+        <p>
+            Donde:
+        </p>
+        <ul>
+            <li><b>n</b> = número de elementos</li>
+            <li><b>k</b> = número de dígitos del número más grande</li>
+        </ul>
+
+        <h3>📌 5. Ventajas</h3>
+        <ul>
+            <li>✔ Muy rápido para grandes volúmenes de datos</li>
+            <li>✔ No usa comparaciones</li>
+            <li>✔ Eficiente cuando k es pequeño</li>
+        </ul>
+
+        <h3>📌 6. Desventajas</h3>
+        <ul>
+            <li>❌ Usa memoria adicional (buckets)</li>
+            <li>❌ No es ideal para números con muchos dígitos</li>
+        </ul>
+
+        <h3>📌 7. Interpretación visual</h3>
+        <ul>
+            <li>📊 Arriba: distribución en buckets</li>
+            <li>📈 Abajo: reconstrucción del arreglo</li>
+        </ul>
+
+    </div>
+</div>
 </body>
 </html>
