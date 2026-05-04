@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfica TreeSort</title>
+    <link rel="stylesheet" href="/treesortgrafica.css">
+</head>
+
+<body>
+
+<h2>🌳 Gráfica de Rendimiento TreeSort</h2>
+
+<div class="grafica-container">
+    <canvas id="chart"></canvas>
+</div>
+
+<div class="explicacion">
+
+    <h3>📊 Análisis de Complejidad</h3>
+
+    <div class="bloque">
+        <p>
+            TreeSort depende de la forma del árbol binario de búsqueda (BST).
+        </p>
+    </div>
+
+    <div class="bloque">
+        <h4>✔ Caso promedio:</h4>
+        <div class="formula">T(n) = n log(n)</div>
+    </div>
+
+    <div class="bloque">
+        <h4>❌ Peor caso (árbol desbalanceado):</h4>
+        <div class="formula">T(n) = n²</div>
+    </div>
+
+    <div class="bloque">
+        <p>
+            En esta gráfica se muestra el tiempo promedio de ejecución del algoritmo
+            para diferentes tamaños de entrada.
+        </p>
+    </div>
+
+    <div class="bloque">
+        <h4>📌 Interpretación:</h4>
+        <ul>
+            <li>Cuando los datos son aleatorios → comportamiento cercano a n log n</li>
+            <li>Cuando los datos están ordenados → comportamiento cercano a n²</li>
+        </ul>
+    </div>
+
+</div>
+
+<button onclick="window.location.href='/treesort'">⬅ Volver</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/treesortgrafica.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TreeSort Visual</title>
+  <link rel="stylesheet" href="/treesort.css">
+</head>
+
+<body>
+
+<h2>🌳 TreeSort Visual</h2>
+
+<div class="panel-input">
+  <input id="input" placeholder="Ej: 3,7,6,2,31,23">
+  <button onclick="cargar()">Cargar</button>
+  <button onclick="generarAleatorio()">🎲 Aleatorio</button>
+  <button onclick="document.getElementById('fileInput').click()">📂 CSV</button>
+  <button onclick="window.location.href='/'">⬅ MergeSort</button>
+  <button onclick="abrirModal()">ℹ️ Info TreeSort</button>
+  <button onclick="window.location.href='/treesort/grafica'">📈 Gráfica</button>
+</div>
+
+<input type="file" id="fileInput" accept=".csv" style="display:none" onchange="leerCSV(event)">
+
+<div class="panel-arboles">
+
+  <div class="card">
+    <h3>🌲 Construcción del Árbol (BST)</h3>
+    <div id="tree"></div>
+  </div>
+
+  <div class="card">
+    <h3>📈 Recorrido In-Order</h3>
+    <div id="sorted"></div>
+  </div>
+
+</div>
+
+<div id="msg" class="mensaje"></div>
+
+<div class="controles">
+  <button onclick="prev()">⏮</button>
+  <button onclick="next()">⏭</button>
+  <button onclick="play()">▶</button>
+  <button onclick="pause()">⏸</button>
+</div>
+
+<script src="/treesort.js"></script>
+<div id="modal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="cerrarModal()">&times;</span>
+
+    <h2>🌳 TreeSort</h2>
+
+    <p>
+      TreeSort es un algoritmo de ordenamiento basado en árboles binarios de búsqueda (BST).
+    </p>
+
+    <h3>📌 Pasos</h3>
+    <ul>
+      <li>Insertar elementos en el árbol</li>
+      <li>Los menores van a la izquierda</li>
+      <li>Los mayores a la derecha</li>
+      <li>Recorrer en orden (in-order)</li>
+    </ul>
+
+    <h3>📊 Complejidad</h3>
+    <div class="formula">
+      T(n) = n log(n)
+    </div>
+
+    <p>
+      En el peor caso (árbol desbalanceado):
+    </p>
+
+    <div class="formula">
+      T(n) = n²
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
