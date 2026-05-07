@@ -51,35 +51,127 @@
 
     <span class="close" onclick="cerrarModal()">&times;</span>
 
-    <h2>🌳 TreeSort</h2>
+    <h2>🌳 ¿Cómo funciona TreeSort?</h2>
 
     <p>
-      TreeSort es un algoritmo de ordenamiento basado en árboles binarios de búsqueda (BST).
+      TreeSort es un algoritmo de ordenamiento que utiliza un
+      <b>Árbol Binario de Búsqueda (BST)</b> para organizar los datos.
+      Cada número se inserta dentro del árbol siguiendo reglas de orden,
+      y luego se realiza un recorrido especial para obtener el arreglo ordenado.
     </p>
 
-    <h3>📌 Pasos</h3>
+    <h3>📌 1. Idea principal</h3>
+
+    <p>
+      El algoritmo transforma el arreglo en una estructura jerárquica.
+      Gracias a las propiedades del árbol binario de búsqueda,
+      los elementos quedan organizados automáticamente.
+    </p>
+
+    <div class="formula">
+      Izquierda &lt; Nodo &lt; Derecha
+    </div>
+
+    <h3>📌 2. Construcción del árbol</h3>
+
     <ul>
-      <li>Insertar elementos en el árbol</li>
-      <li>Los menores van a la izquierda</li>
-      <li>Los mayores a la derecha</li>
-      <li>Recorrer en orden (in-order)</li>
+      <li>El primer número se convierte en la raíz</li>
+      <li>Los números menores van a la izquierda</li>
+      <li>Los números mayores van a la derecha</li>
+      <li>El proceso continúa recursivamente</li>
     </ul>
 
-    <h3>📊 Complejidad</h3>
+    <p>
+      Cada inserción compara el nuevo valor con los nodos existentes
+      hasta encontrar una posición libre.
+    </p>
+
+    <h3>📌 3. Ejemplo paso a paso</h3>
+
     <div class="formula">
-      T(n) = n log(n)
+      [7, 3, 9, 1, 5]
     </div>
 
+    <ul>
+      <li>7 → raíz del árbol</li>
+      <li>3 &lt; 7 → hijo izquierdo</li>
+      <li>9 &gt; 7 → hijo derecho</li>
+      <li>1 &lt; 3 → izquierda de 3</li>
+      <li>5 &gt; 3 → derecha de 3</li>
+    </ul>
+
+    <h3>📌 4. Recorrido In-Order</h3>
+
     <p>
-      En el peor caso (árbol desbalanceado):
+      Después de construir el árbol, se realiza un recorrido:
     </p>
 
     <div class="formula">
-      T(n) = n²
+      Izquierda → Nodo → Derecha
     </div>
 
+    <p>
+      Este recorrido visita primero los menores,
+      luego el nodo actual y finalmente los mayores,
+      generando automáticamente el arreglo ordenado.
+    </p>
+
+    <h3>📌 5. Interpretación visual</h3>
+
+    <ul>
+      <li>🌲 Panel izquierdo → construcción del BST</li>
+      <li>📈 Panel derecho → recorrido In-Order</li>
+      <li>⬅️ L → hijo izquierdo</li>
+      <li>➡️ R → hijo derecho</li>
+    </ul>
+
+    <h3>📌 6. Complejidad temporal</h3>
+
+    <div class="formula">
+      Mejor caso: T(n) = n log(n)
+    </div>
+
+    <p>
+      Cuando el árbol está balanceado,
+      las inserciones y recorridos son eficientes.
+    </p>
+
+    <div class="formula">
+      Peor caso: T(n) = n²
+    </div>
+
+    <p>
+      El peor caso ocurre cuando los datos llegan ordenados
+      y el árbol se convierte en una lista lineal.
+    </p>
+
+    <h3>📌 7. Ventajas</h3>
+
+    <ul>
+      <li>✔ Organiza los datos jerárquicamente</li>
+      <li>✔ Permite búsquedas eficientes</li>
+      <li>✔ El recorrido genera automáticamente el orden</li>
+      <li>✔ Muy útil para estructuras dinámicas</li>
+    </ul>
+
+    <h3>📌 8. Desventajas</h3>
+
+    <ul>
+      <li>❌ Puede desbalancearse</li>
+      <li>❌ Consume memoria adicional</li>
+      <li>❌ El rendimiento depende de la forma del árbol</li>
+    </ul>
+
+    <h3>📌 9. Aplicaciones reales</h3>
+
+    <ul>
+      <li>📂 Sistemas de archivos</li>
+      <li>🗂 Índices en bases de datos</li>
+      <li>🔎 Motores de búsqueda</li>
+      <li>📊 Gestión dinámica de datos</li>
+    </ul>
+
   </div>
-</div>
 
 </body>
 </html>
